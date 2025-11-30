@@ -1,0 +1,84 @@
+Q69. Find the second largest element in an array.
+
+Ans: #include <stdio.h>
+
+int main() {
+    int arr[50], n;
+    int largest, secondLargest;
+
+    // Taking size of array
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    // Taking array elements
+    printf("Enter %d elements:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Initialize largest and second largest
+    largest = arr[0];
+    secondLargest = -99999; // A very small number
+
+    // Find largest and second largest
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > largest) {
+            secondLargest = largest;   // Old largest becomes second largest
+            largest = arr[i];          // New largest found
+        }
+        else if (arr[i] > secondLargest && arr[i] != largest) {
+            secondLargest = arr[i];
+        }
+    }
+
+    printf("The second largest element is: %d\n", secondLargest);
+
+    return 0;
+}
+
+Q70. Rotate an array to the right by k positions.
+
+Ans: #include <stdio.h>
+
+int main() {
+    int arr[50], n, k;
+    
+    // Take size of array
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    // Take array elements
+    printf("Enter %d elements:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Take number of rotations
+    printf("Enter how many positions to rotate to the right: ");
+    scanf("%d", &k);
+
+    // To avoid extra rotations
+    k = k % n;
+
+    // Temporary array to store rotated result
+    int rotated[50];
+    int index = 0;
+
+    // Copy last k elements first
+    for (int i = n - k; i < n; i++) {
+        rotated[index++] = arr[i];
+    }
+
+    // Copy remaining elements
+    for (int i = 0; i < n - k; i++) {
+        rotated[index++] = arr[i];
+    }
+
+    // Print rotated array
+    printf("Array after right rotation: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", rotated[i]);
+    }
+
+    return 0;
+}
