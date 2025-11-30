@@ -1,0 +1,84 @@
+Q63. Merge two arrays.
+
+Ans: #include <stdio.h>
+
+int main() {
+    int arr1[50], arr2[50], merged[100];
+    int size1, size2, i, j;
+
+    // Taking size of first array
+    printf("Enter the number of elements in First Array: ");
+    scanf("%d", &size1);
+
+    // Taking elements of first array
+    printf("Enter elements of First Array:\n");
+    for (i = 0; i < size1; i++) {
+        scanf("%d", &arr1[i]);
+    }
+
+    // Taking size of second array
+    printf("Enter the number of elements in Second Array: ");
+    scanf("%d", &size2);
+
+    // Taking elements of second array
+    printf("Enter elements of Second Array:\n");
+    for (i = 0; i < size2; i++) {
+        scanf("%d", &arr2[i]);
+    }
+
+    // Copying arr1 into merged array
+    for (i = 0; i < size1; i++) {
+        merged[i] = arr1[i];
+    }
+
+    // Copying arr2 after arr1 inside merged array
+    for (j = 0; j < size2; j++) {
+        merged[i] = arr2[j];
+        i++;
+    }
+
+    // Printing the merged array
+    printf("Merged Array: ");
+    for (i = 0; i < (size1 + size2); i++) {
+        printf("%d ", merged[i]);
+    }
+
+    return 0;
+}
+
+Q64. Find the digit that occurs the most times in an integer number.
+
+Ans: #include <stdio.h>
+
+int main() {
+    int num, digit;
+    int freq[10] = {0}; // To store frequency of digits 0-9
+    int maxDigit = 0, maxCount = 0;
+
+    printf("Enter any integer number: ");
+    scanf("%d", &num);
+
+    // If number is negative, convert to positive
+    if (num < 0) {
+        num = -num;
+    }
+
+    // Counting the frequency of each digit
+    while (num > 0) {
+        digit = num % 10;  // Extract last digit
+        freq[digit]++;     // Increase count for that digit
+        num = num / 10;    // Remove last digit
+    }
+
+    // Finding which digit repeated the most
+    for (int i = 0; i < 10; i++) {
+        if (freq[i] > maxCount) {
+            maxCount = freq[i];
+            maxDigit = i;
+        }
+    }
+
+    printf("The digit that occurs the most is %d (appeared %d times).\n", maxDigit, maxCount);
+
+    return 0;
+}
