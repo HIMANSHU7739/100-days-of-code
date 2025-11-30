@@ -1,0 +1,79 @@
+Q67. Insert an element in an array at a given position.
+
+Ans:  #include <stdio.h>
+
+int main() {
+    int arr[50], n, element, position;
+
+    // Taking size of array
+    printf("Enter number of elements in the array: ");
+    scanf("%d", &n);
+
+    // Taking array elements
+    printf("Enter %d elements:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Taking element and position
+    printf("Enter the element to insert: ");
+    scanf("%d", &element);
+
+    printf("Enter the position where you want to insert (1 to %d): ", n + 1);
+    scanf("%d", &position);
+
+    // Making space by shifting elements to the right
+    for (int i = n - 1; i >= position - 1; i--) {
+        arr[i + 1] = arr[i];
+    }
+
+    // Insert the element
+    arr[position - 1] = element;
+    n++;
+
+    // Printing updated array
+    printf("Array after insertion: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+Q68. Delete an element from an array.
+
+Ans: #include <stdio.h>
+
+int main() {
+    int arr[50], n, position;
+
+    // Taking size of array
+    printf("Enter number of elements in the array: ");
+    scanf("%d", &n);
+
+    // Taking array elements
+    printf("Enter %d elements:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Taking the position to delete
+    printf("Enter the position of the element to delete (1 to %d): ", n);
+    scanf("%d", &position);
+
+    // Shift elements left to fill the gap
+    for (int i = position - 1; i < n - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+
+    // Array size reduces by 1
+    n--;
+
+    // Printing updated array
+    printf("Array after deletion: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
