@@ -1,0 +1,91 @@
+Q65. Search in a sorted array using binary search.
+
+Ans:
+#include <stdio.h>
+
+int main() {
+    int arr[50], n, target;
+    int low, high, mid;
+    int found = 0;
+
+    // Taking size of array
+    printf("Enter number of elements (sorted): ");
+    scanf("%d", &n);
+
+    // Taking sorted array elements
+    printf("Enter %d sorted elements:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Taking the value to search
+    printf("Enter the number you want to search: ");
+    scanf("%d", &target);
+
+    // Binary Search starts
+    low = 0;
+    high = n - 1;
+
+    while (low <= high) {
+        mid = (low + high) / 2;  // Middle position
+
+        if (arr[mid] == target) {
+            printf("Element %d found at position %d.\n", target, mid + 1);
+            found = 1;
+            break;
+        }
+        else if (arr[mid] < target) {
+            low = mid + 1;  // Search in right half
+        }
+        else {
+            high = mid - 1; // Search in left half
+        }
+    }
+
+    if (!found) {
+        printf("Element %d not found in the array.\n", target);
+    }
+
+    return 0;
+}
+
+Q66. Insert an element in a sorted array at the appropriate position.
+
+Ans:  #include <stdio.h>
+
+int main() {
+    int arr[50], n, newElement, i, pos;
+
+    // Taking size of the sorted array
+    printf("Enter the number of elements in the sorted array: ");
+    scanf("%d", &n);
+
+    // Taking sorted elements
+    printf("Enter %d sorted elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Element to insert
+    printf("Enter the element to insert: ");
+    scanf("%d", &newElement);
+
+    // Find the correct position for newElement
+    pos = n - 1;
+    while (pos >= 0 && arr[pos] > newElement) {
+        arr[pos + 1] = arr[pos];  // Shift elements to the right
+        pos--;
+    }
+
+    // Insert the element
+    arr[pos + 1] = newElement;
+    n++;
+
+    // Print the updated array
+    printf("Array after insertion: ");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
