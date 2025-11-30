@@ -1,0 +1,82 @@
+Q51. Write a program to print the following pattern:
+    5
+   45
+  345
+ 2345
+12345
+
+Ans:   #include <stdio.h>
+
+int main() {
+    int i, j;
+    int n = 5;
+
+    for (i = 1; i <= n; i++) {
+        /* print leading spaces */
+        for (j = 1; j <= n - i; j++) {
+            printf(" ");
+        }
+        /* print numbers from (n - i + 1) to n */
+        for (j = n - i + 1; j <= n; j++) {
+            printf("%d", j);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+Q52: Write a program to print the following pattern:
+
+*
+
+*
+*
+*
+
+*
+*
+*
+*
+*
+
+*
+*
+*
+
+*
+Ans: #include <stdio.h>
+
+int main() {
+    int i, j;
+    int n = 3;  
+
+    // Top half: rows 1 to n (1, 3, 5 stars)
+    for (i = 1; i <= n; i++) {
+        // Print leading spaces
+        for (j = 1; j <= n - i; j++) {
+            printf(" ");
+        }
+        // Print stars: 2*i - 1 stars
+        for (j = 1; j <= 2*i - 1; j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+
+    // Bottom half: rows 4 to 5 (3, 1 stars)
+    for (i = 1; i <= n - 1; i++) {
+        // Print leading spaces: i spaces
+        for (j = 1; j <= i; j++) {
+            printf(" ");
+        }
+        // Print stars: 2*(n - i) - 1 stars
+        for (j = 1; j <= 2*(n - i) - 1; j++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
